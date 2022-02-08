@@ -1,0 +1,52 @@
+Tests 0:
+
+0. install
+    $ sudo apt-get install mpich
+
+1. Use make.def_gcc_mpich
+    place in config/make.def
+
+2. try: 
+
+    $ make bt-mz CLASS=S NPROCS=2
+
+
+3. run:
+
+    $ set OMP_NUM_THREADS 2
+    $ mpirun -np 4 bin/bt-mz.S.2 
+
+
+-----------------------------------------------------
+
+Test vs machines
+
+always: set OMP_NUM_THREADS 2
+using: 
+
+make bt-mz CLASS=A NPROCS=1
+make bt-mz CLASS=A NPROCS=2
+make bt-mz CLASS=A NPROCS=4
+make bt-mz CLASS=A NPROCS=8
+make bt-mz CLASS=A NPROCS=16
+
+mpirun -np 1 bin/bt-mz.A.1 > results/bt-mz.A.1
+mpirun -np 2 bin/bt-mz.A.2 > results/bt-mz.A.2
+mpirun -np 4 bin/bt-mz.A.4 > results/bt-mz.A.4
+mpirun -np 8 bin/bt-mz.A.8 > results/bt-mz.A.8
+mpirun -np 16 bin/bt-mz.A.16 > results/bt-mz.A.16
+
+And:
+
+make bt-mz CLASS=B NPROCS=1
+make bt-mz CLASS=B NPROCS=2
+make bt-mz CLASS=B NPROCS=4
+make bt-mz CLASS=B NPROCS=8
+make bt-mz CLASS=B NPROCS=16
+
+mpirun -np 1 bin/bt-mz.B.1 > results/bt-mz.B.1
+mpirun -np 2 bin/bt-mz.B.2 > results/bt-mz.B.2
+mpirun -np 4 bin/bt-mz.B.4 > results/bt-mz.B.4
+mpirun -np 8 bin/bt-mz.B.8 > results/bt-mz.B.8
+mpirun -np 16 bin/bt-mz.B.16 > results/bt-mz.B.16
+
