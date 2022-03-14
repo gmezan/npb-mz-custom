@@ -1,4 +1,9 @@
-results
-results/
 bin
 bin/
+
+env/
+.env
+venv/
+venv
+env
+*.o
