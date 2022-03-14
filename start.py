@@ -1,12 +1,18 @@
-from pickle import MARK
-import re
 import pandas as pd
 import matplotlib.pyplot as plt
+import subprocess
 
-classes = ['A', 'B']
+classes = ['A', 'B', 'C']
 benchmarks = ['bt-mz']
 types = ['sriov', 'ovs']
-MARKER_SIZE=12
+
+# Generate CSV files with raw data
+bashCommand = "bash make_data.sh"
+process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE)
+output, error = process.communicate()
+
+
+LINEWIDTH=1
 
 def get_csv_name(benchmark, type, c):
     return 'csv/' + benchmark + '-' + c + '-' + type + '.csv'
@@ -27,35 +33,15 @@ plt.figure(figsize=(10, 10))
 dfs_b = dfs['bt-mz']
 
 for c in classes:
-    plt.subplot(int('33' + str(counter) ))
-    sriov_plt = plt.scatter(dfs_b['sriov'][c].loc[:,'nproc'], dfs_b['sriov'][c].loc[:,'time_s'], s=MARKER_SIZE)
-    ovs_plt = plt.scatter(dfs_b['ovs'][c].loc[:,'nproc'], dfs_b['ovs'][c].loc[:,'time_s'], s=MARKER_SIZE)
-    plt.legend((sriov_plt, ovs_plt),('sriov','ovs'))
-    plt.xlabel('nproc')
-    plt.ylabel('time (s)')
-    plt.title('bt-mz-' + c + ' Time in Seconds')
-
-    counter = counter + 1
-
-    plt.subplot(int('33' + str(counter) ))
-    sriov_plt = plt.scatter(dfs_b['sriov'][c].loc[:,'nproc'], dfs_b['sriov'][c].loc[:,'mops_total'], s=MARKER_SIZE)
-    ovs_plt = plt.scatter(dfs_b['ovs'][c].loc[:,'nproc'], dfs_b['ovs'][c].loc[:,'mops_total'], s=MARKER_SIZE)
-    plt.legend((sriov_plt, ovs_plt),('sriov','ovs'))
-    plt.xlabel('nproc')
-    plt.ylabel('mops total')
-    plt.title('bt-mz-' + c + 'Mop/s Total')
-
-    counter = counter + 1
-
-    plt.subplot(int('33' + str(counter) ))
-    sriov_plt = plt.scatter(dfs_b['sriov'][c].loc[:,'nproc'], dfs_b['sriov'][c].loc[:,'mops_thread'], s=MARKER_SIZE)
-    ovs_plt = plt.scatter(dfs_b['ovs'][c].loc[:,'nproc'], dfs_b['ovs'][c].loc[:,'mops_thread'], s=MARKER_SIZE)
-    plt.legend((sriov_plt, ovs_plt),('sriov','ovs'))
-    plt.xlabel('nproc')
-    plt.ylabel('mops thread')
-    plt.title('bt-mz-' + c + 'Mop/s Thread')
-
-    counter = counter + 1
+    for i in ['mops_total','mops_thread','time_s']:
+        plt.subplot(int('33' + str(counter) ))
+        sriov_plt = plt.plot(dfs_b['sriov'][c].loc[:,'nproc'], dfs_b['sriov'][c].loc[:,i], '-o', linewidth=LINEWIDTH)
+        ovs_plt = plt.plot(dfs_b['ovs'][c].loc[:,'nproc'], dfs_b['ovs'][c].loc[:,i], '-o', linewidth=LINEWIDTH)
+        plt.legend(['sriov','ovs'])
+        plt.xlabel('nproc')
+        plt.ylabel(i)
+        plt.title('bt-mz-' + c + ' ' + i)
+        counter = counter + 1
 
 plt.suptitle('Result: BT-MZ')
 plt.tight_layout()
