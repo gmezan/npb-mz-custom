@@ -4,8 +4,8 @@ LABEL=$1
 HOSTFILE=../hostfile
 RESULTS=../results
 BIN=../bin
-BENCHMARK=bt-mz
-CLASS=$2
+BENCHMARK=$2
+CLASS=$3
 
 for nproc in 1 2 4 6 8 10 12 16
 do

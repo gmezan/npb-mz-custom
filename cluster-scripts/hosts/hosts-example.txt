@@ -1,0 +1,20 @@
+127.0.0.1 localhost
+
+10.183.109.244 master0-sriov
+10.183.109.30 worker0-sriov
+10.183.109.169 worker1-sriov
+
+#10.244.33.14 worker1
+#10.244.33.215 worker0
+
+10.183.110.187 master0-ovs
+10.183.110.127 worker0-ovs
+10.183.110.13 worker1-ovs
+
+# The following lines are desirable for IPv6 capable hosts
+#::1 ip6-localhost ip6-loopback
+#fe00::0 ip6-localnet
+#ff00::0 ip6-mcastprefix
+#ff02::1 ip6-allnodes
+#ff02::2 ip6-allrouters
+#ff02::3 ip6-allhosts

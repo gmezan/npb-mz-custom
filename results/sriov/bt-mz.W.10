@@ -42,11 +42,11 @@
  Class           =                        W
  Size            =             64x   64x  8
  Iterations      =                      200
- Time in seconds =                     4.53
+ Time in seconds =                     4.77
  Total processes =                       10
  Total threads   =                       10
- Mop/s total     =                  3166.48
- Mop/s/thread    =                   316.65
+ Mop/s total     =                  3008.33
+ Mop/s/thread    =                   300.83
  Operation type  =           floating point
  Verification    =               SUCCESSFUL
  Version         =                    3.3.1
