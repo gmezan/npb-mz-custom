@@ -28,21 +28,22 @@ for b in benchmarks:
 
 counter=1
 
-plt.figure(figsize=(10, 10))
+for b in benchmarks:
+    plt.figure(figsize=(10, 10))
 
-dfs_b = dfs['bt-mz']
+    dfs_b = dfs[b]
 
-for c in classes:
-    for i in ['mops_total','mops_thread','time_s']:
-        plt.subplot(int('33' + str(counter) ))
-        sriov_plt = plt.plot(dfs_b['sriov'][c].loc[:,'nproc'], dfs_b['sriov'][c].loc[:,i], '-o', linewidth=LINEWIDTH)
-        ovs_plt = plt.plot(dfs_b['ovs'][c].loc[:,'nproc'], dfs_b['ovs'][c].loc[:,i], '-o', linewidth=LINEWIDTH)
-        plt.legend(['sriov','ovs'])
-        plt.xlabel('nproc')
-        plt.ylabel(i)
-        plt.title('bt-mz-' + c + ' ' + i)
-        counter = counter + 1
+    for c in classes:
+        for i in ['mops_total','mops_thread','time_s']:
+            plt.subplot(int('33' + str(counter) ))
+            sriov_plt = plt.plot(dfs_b['sriov'][c].loc[:,'nproc'], dfs_b['sriov'][c].loc[:,i], '-o', linewidth=LINEWIDTH)
+            ovs_plt = plt.plot(dfs_b['ovs'][c].loc[:,'nproc'], dfs_b['ovs'][c].loc[:,i], '-o', linewidth=LINEWIDTH)
+            plt.legend(['sriov','ovs'])
+            plt.xlabel('nproc')
+            plt.ylabel(i)
+            plt.title(b + '-' + c + ' ' + i)
+            counter = counter + 1
 
-plt.suptitle('Result: BT-MZ')
+    plt.suptitle('Result: ' + b)
 plt.tight_layout()
 plt.show()
