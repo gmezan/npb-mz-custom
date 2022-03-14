@@ -42,11 +42,11 @@
  Class           =                        A
  Size            =            128x  128x 16
  Iterations      =                      200
- Time in seconds =                    24.72
+ Time in seconds =                    24.56
  Total processes =                       10
  Total threads   =                       10
- Mop/s total     =                  5915.31
- Mop/s/thread    =                   591.53
+ Mop/s total     =                  5952.59
+ Mop/s/thread    =                   595.26
  Operation type  =           floating point
  Verification    =               SUCCESSFUL
  Version         =                    3.3.1
