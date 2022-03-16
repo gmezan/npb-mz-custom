@@ -1,4 +1,4 @@
-c NPROCS = 4 CLASS = A
+c NPROCS = 16 CLASS = D
 c  
 c  
 c  This file is generated automatically by the setparams utility.
@@ -6,30 +6,30 @@ c  It sets the number of processors and the class of the NPB
 c  in this directory. Do not modify it by hand.
 c  
         character class
-        parameter (class='A')
+        parameter (class='D')
         integer num_procs, num_procs2
-        parameter (num_procs=4, num_procs2=4)
+        parameter (num_procs=16, num_procs2=16)
         integer x_zones, y_zones
         parameter (x_zones=4, y_zones=4)
         integer gx_size, gy_size, gz_size
-        parameter (gx_size=128, gy_size=128, gz_size=16)
+        parameter (gx_size=1632, gy_size=1216, gz_size=34)
         integer problem_size
-        parameter (problem_size = 32)
+        parameter (problem_size = 408)
         integer max_xysize, max_xybcsize
         integer proc_max_size, proc_max_size5, proc_max_bcsize
-        parameter (max_xysize=4224)
-        parameter (max_xybcsize=2440)
+        parameter (max_xysize=124336)
+        parameter (max_xybcsize=7090)
         parameter (proc_max_size=max_xysize*gz_size)
         parameter (proc_max_size5=proc_max_size*5)
         parameter (proc_max_bcsize=max_xybcsize*(gz_size-2))
         integer max_numzones
-        parameter (max_numzones=4)
+        parameter (max_numzones=1)
 
 c number of iterations and how often to print the norm
         integer itmax_default, inorm_default
-        parameter (itmax_default=250, inorm_default=250)
+        parameter (itmax_default=300, inorm_default=300)
         double precision dt_default, ratio
-        parameter (dt_default = 2.0d0, ratio = 1.d0)
+        parameter (dt_default = 1.0d0, ratio = 1.d0)
         integer start1, start5, qstart_west, qstart_east
         integer qstart_south, qstart_north, qoffset
         integer qcomm_size, qstart2_west, qstart2_east
@@ -37,7 +37,7 @@ c number of iterations and how often to print the norm
         logical  convertdouble
         parameter (convertdouble = .false.)
         character compiletime*11
-        parameter (compiletime='07 Feb 2022')
+        parameter (compiletime='16 Mar 2022')
         character npbversion*5
         parameter (npbversion='3.3.1')
         character cs1*6

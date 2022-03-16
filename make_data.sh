@@ -1,9 +1,14 @@
-BENCHMARK=bt-mz
+#!/bin/bash
 
 HEADER=name,nproc,mops_total,mops_thread,time_s
 
+labels=(sriov ovs)
+benchmarks=(bt-mz lu-mz sp-mz)
+classes=(W A B C)
+nprocs=(1 2 4 6 8 10 12 16)
+
 rm csv/*
-for t in ovs sriov
+for t in "${labels[@]}"
 do
     for class in W A B C
     do

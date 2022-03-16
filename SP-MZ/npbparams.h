@@ -1,4 +1,4 @@
-c NPROCS = 16 CLASS = A
+c NPROCS = 16 CLASS = D
 c  
 c  
 c  This file is generated automatically by the setparams utility.
@@ -6,27 +6,27 @@ c  It sets the number of processors and the class of the NPB
 c  in this directory. Do not modify it by hand.
 c  
         character class
-        parameter (class='A')
+        parameter (class='D')
         integer num_procs, num_procs2
         parameter (num_procs=16, num_procs2=16)
         integer x_zones, y_zones
-        parameter (x_zones=4, y_zones=4)
+        parameter (x_zones=32, y_zones=32)
         integer gx_size, gy_size, gz_size, niter_default
-        parameter (gx_size=128, gy_size=128, gz_size=16)
-        parameter (niter_default=400)
+        parameter (gx_size=1632, gy_size=1216, gz_size=34)
+        parameter (niter_default=500)
         integer problem_size
-        parameter (problem_size = 32)
+        parameter (problem_size = 51)
         integer max_xysize, max_xybcsize
         integer proc_max_size, proc_max_size5, proc_max_bcsize
-        parameter (max_xysize=1056)
-        parameter (max_xybcsize=610)
+        parameter (max_xysize=124032)
+        parameter (max_xybcsize=54400)
         parameter (proc_max_size=max_xysize*gz_size)
         parameter (proc_max_size5=proc_max_size*5)
         parameter (proc_max_bcsize=max_xybcsize*(gz_size-2))
         integer max_numzones
-        parameter (max_numzones=1)
+        parameter (max_numzones=64)
         double precision dt_default, ratio
-        parameter (dt_default = 0.0015d0, ratio = 1.d0)
+        parameter (dt_default = 0.00030d0, ratio = 1.d0)
         integer start1, start5, qstart_west, qstart_east
         integer qstart_south, qstart_north, qoffset
         integer qcomm_size, qstart2_west, qstart2_east
@@ -34,7 +34,7 @@ c
         logical  convertdouble
         parameter (convertdouble = .false.)
         character compiletime*11
-        parameter (compiletime='07 Feb 2022')
+        parameter (compiletime='16 Mar 2022')
         character npbversion*5
         parameter (npbversion='3.3.1')
         character cs1*6

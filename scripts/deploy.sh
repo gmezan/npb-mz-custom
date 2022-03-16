@@ -1,16 +1,33 @@
-bash ../cluster-scripts/ovs_set_net.sh
+#!/bin/bash
 
-BENCHMARK=bt-mz
+HOSTFILE=../hostfile
+RESULTS=../results
+BIN=../bin
 
-bash start_distributed_test.sh ovs $BENCHMARK W
-#bash start_distributed_test.sh ovs $BENCHMARK A
-#bash start_distributed_test.sh ovs $BENCHMARK B
-#bash start_distributed_test.sh ovs $BENCHMARK C
+labels=(sriov ovs)
+benchmarks=(bt-mz lu-mz sp-mz)
+classes=(W A B C)
+nprocs=(1 2 4 6 8 10 12 16)
 
-bash ../cluster-scripts/sriov_set_net.sh
+# Running al benchmarks
 
-bash start_distributed_test.sh sriov $BENCHMARK W
-#bash start_distributed_test.sh sriov $BENCHMARK A
-#bash start_distributed_test.sh sriov $BENCHMARK B
-#bash start_distributed_test.sh sriov $BENCHMARK C
+for l in "${labels[@]}"
+do
+	mkdir -p $RESULTS/$l
+	bash ../cluster-scripts/${l}_set_net.sh
+	sleep 5
+
+	for b in "${benchmarks[@]}"
+	do
+		for c in "${classes[@]}"
+		do
+			for nproc in "${nprocs[@]}"
+			do
+				echo "> Running $l/$b.$c.$nproc"
+				#mpirun --hostfile $HOSTFILE -np $nproc $BIN/$b.$c.$nproc > $RESULTS/$l/$b.$c.$nproc
+				sleep 2
+			done
+		done
+	done
+done
 
