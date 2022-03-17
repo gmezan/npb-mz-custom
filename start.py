@@ -2,12 +2,12 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import subprocess
 
-classes = ['A', 'B', 'C']
-benchmarks = ['bt-mz']
+classes = ['S']
+benchmarks = ['bt-mz', 'lu-mz', 'sp-mz']
 types = ['sriov', 'ovs']
 
 # Generate CSV files with raw data
-bashCommand = "bash scripts/make_data.sh"
+bashCommand = "bash make_data.sh"
 process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE)
 output, error = process.communicate()
 
@@ -33,7 +33,8 @@ width = 3 * 3 + 1
 height = len(classes) * plot_size + 1
 
 for b in benchmarks:
-    plt.figure(figsize=(height, width))
+    counter = 1
+    plt.figure(figsize=(width, height))
 
     dfs_b = dfs[b]
 
