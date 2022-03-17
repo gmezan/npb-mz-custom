@@ -28,8 +28,12 @@ for b in benchmarks:
 
 counter=1
 
+plot_size = 3
+width = 3 * 3 + 1
+height = len(classes) * plot_size + 1
+
 for b in benchmarks:
-    plt.figure(figsize=(10, 10))
+    plt.figure(figsize=(height, width))
 
     dfs_b = dfs[b]
 

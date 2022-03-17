@@ -1,0 +1,9 @@
+name,nproc,mops_total,mops_thread,time_s
+lu-mz.B.1,1,,,
+lu-mz.B.2,2,,,
+lu-mz.B.4,4,,,
+lu-mz.B.6,6,,,
+lu-mz.B.8,8,,,
+lu-mz.B.10,10,,,
+lu-mz.B.12,12,,,
+lu-mz.B.16,16,,,
