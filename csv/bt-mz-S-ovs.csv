@@ -1,0 +1,5 @@
+name,nproc,mops_total,mops_thread,time_s
+bt-mz.S.1,1,2697.13,2697.13,0.14
+bt-mz.S.2,2,4067.68,2033.84,0.09
+bt-mz.S.4,4,3934.45,983.61,0.10
+bt-mz.S.6,6,,,

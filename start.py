@@ -7,7 +7,7 @@ benchmarks = ['bt-mz']
 types = ['sriov', 'ovs']
 
 # Generate CSV files with raw data
-bashCommand = "bash make_data.sh"
+bashCommand = "bash scripts/make_data.sh"
 process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE)
 output, error = process.communicate()
 

@@ -2,10 +2,7 @@
 
 HEADER=name,nproc,mops_total,mops_thread,time_s
 
-labels=(sriov ovs)
-benchmarks=(bt-mz lu-mz sp-mz)
-classes=(W A B C)
-nprocs=(1 2 4 6 8 10 12 16)
+source ./scripts/config.sh
 
 rm csv/*
 for t in "${labels[@]}"

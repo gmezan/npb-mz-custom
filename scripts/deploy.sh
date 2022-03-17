@@ -4,18 +4,17 @@ HOSTFILE=../hostfile
 RESULTS=../results
 BIN=../bin
 
-labels=(sriov ovs)
-benchmarks=(bt-mz lu-mz sp-mz)
-classes=(W A B C)
-nprocs=(1 2 4 6 8 10 12 16)
+source ./config.sh
 
 # Running al benchmarks
+
+rm -rf $RESULTS/*
 
 for l in "${labels[@]}"
 do
 	mkdir -p $RESULTS/$l
 	bash ../cluster-scripts/${l}_set_net.sh
-	sleep 5
+	sleep 3
 
 	for b in "${benchmarks[@]}"
 	do
@@ -24,8 +23,8 @@ do
 			for nproc in "${nprocs[@]}"
 			do
 				echo "> Running $l/$b.$c.$nproc"
-				#mpirun --hostfile $HOSTFILE -np $nproc $BIN/$b.$c.$nproc > $RESULTS/$l/$b.$c.$nproc
-				sleep 2
+				mpirun --hostfile $HOSTFILE -np $nproc $BIN/$b.$c.$nproc > $RESULTS/$l/$b.$c.$nproc
+				sleep 1
 			done
 		done
 	done
